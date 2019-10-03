@@ -1,0 +1,41 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam.football;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf.football";
+option java_outer_classname = "PassSequenceStatisticsStreamElementPayloadProtos";
+
+// Payload of a passSequenceStatistics stream element
+message PassSequenceStatisticsStreamElementPayload {
+
+    int64 numPassSequences = 1; // Number of pass sequences
+
+    double avgPassSequenceLength = 2; // Average pass sequence length
+
+    int64 maxPassSequenceLength = 3; // Max pass sequence length
+
+    int64 numDoublePasses = 4; // Number of double passes
+}
+
+// Object identifiers, group identifiers and positions in the content:
+// objectIdentifiers[0] = Identifier of the player for which the passSequenceStatistics stream element contains data and null if the passSequenceStatistics stream element contains data for a team
+// groupIdentifiers[0] = Identifier of the team for which the passSequenceStatistics stream element contains data (Attention: The passSequenceStatistics stream element can contain data for the team or for a single player of the team. This can be checked with isTeamStatistics().)
+// positions is empty

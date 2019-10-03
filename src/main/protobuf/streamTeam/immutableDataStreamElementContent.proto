@@ -1,0 +1,61 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf";
+option java_outer_classname = "ImmutableDataStreamElementContentProtos";
+
+import "google/protobuf/any.proto";
+
+// Content of the data stream element (contained as byte array in the value field of the Kafka message)
+message ImmutableDataStreamElementContent {
+
+    bool atomic = 1; // Flag indicating if the data stream element is atomic (true) or non-atomic (false)
+
+    string eventIdentifier = 2; // Event identifier that groups non-atomic event stream elements representing updates of the same non-atomic event (otherwise empty string)
+
+    Phase phase = 3; // Phase of the data stream element
+
+    int64 generationTimestamp = 4; // Globally unambiguous generation timestamp of the data stream element. Specifies the time of generation (according to one globally consistent time space if the clocks of all raw input generation devices are properly synchronized).
+
+    repeated Position positions = 5; // Positions tuple
+
+    repeated string objectIdentifiers = 6; // Object identifiers tuple
+
+    repeated string groupIdentifiers = 7; // Group identifiers tuple
+
+    google.protobuf.Any payload = 8; // Payload (different data stream specific type)
+
+    // 3D position
+    message Position {
+        double x = 1; // X coordinate
+        double y = 2; // Y coordinate
+        double z = 3; // Z coordinate
+    }
+
+    // Phase enum
+    enum Phase {
+        NULL = 0; // If the data stream element is atomic
+        START = 1; // First data stream element of a non-atomic event
+        ACTIVE = 2; // Any data stream element of a non-atomic event which is neither the first nor the last
+        END = 3; // Last data stream element of a non-atomic event
+    }
+}

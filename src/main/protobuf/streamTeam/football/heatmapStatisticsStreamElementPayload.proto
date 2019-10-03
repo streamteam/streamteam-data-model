@@ -1,0 +1,43 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam.football;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf.football";
+option java_outer_classname = "HeatmapStatisticsStreamElementPayloadProtos";
+
+// Payload of a heatmapStatistics stream element
+message HeatmapStatisticsStreamElementPayload {
+
+    int32 numXGridCells = 1; // Number of grid cells in x direction
+
+    int32 numYGridCells = 2; // Number of grid cells in y direction
+
+    int64 intervalInS = 3; // Interval in s
+
+    int64 totalNum = 4; // Total number of cell entries
+
+    string cells = 5; // String specifying the cells of the heatmap: val1;val2;... (val=0x5 means a sequence of five 0)
+}
+
+// Object identifiers, group identifiers and positions in the content:
+// objectIdentifiers[0] = Identifier of the player for which the heatmap stream element contains data and null if the heatmap stream element contains data for a team
+// groupIdentifiers[0] = Identifier of the team for which the heatmap stream element contains data (Attention: The heatmap stream element can contain data for the team or for a single player of the team. This can be checked with isTeamStatistics().)
+// positions is empty

@@ -1,0 +1,41 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam.football;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf.football";
+option java_outer_classname = "BallPossessionChangeEventStreamElementPayloadProtos";
+
+// Payload of a ballPossessionChangeEvent stream element
+message BallPossessionChangeEventStreamElementPayload {
+
+    int32 numPlayersNearerToGoal = 1; // Number of players of the opposing team which are nearer to the goal
+}
+
+// Object identifiers, group identifiers and positions in the content:
+// If someone (a player) is in possession of the ball:
+// objectIdentifiers[0] = Identifier of the player who came into ball possession
+// groupIdentifiers[0] = Identifier of team whose player came into ball possession
+// positions[0] = Position of the player when he/she came into ball possession
+// positions[1] = Position of the ball when the player came into ball possession
+// Otherwise:
+// objectIdentifiers empty
+// groupIdentifiers empty
+// positions[0] = Position of the ball when the ballPossessionChangeEvent stream element was generated

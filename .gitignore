@@ -1,0 +1,13 @@
+*.DS_Store
+
+/.project
+
+*.iml
+*.ipr
+*.iws
+.idea/*
+
+deploy/*
+target/*
+log/*
+javascriptLib/*

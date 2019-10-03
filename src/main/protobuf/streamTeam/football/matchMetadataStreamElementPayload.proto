@@ -1,0 +1,61 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam.football;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf.football";
+option java_outer_classname = "MatchMetadataStreamElementPayloadProtos";
+
+// Payload of a matchMetadata stream element
+message MatchMetadataStreamElementPayload {
+
+    int64 generationTimestampFirstDataStreamElementOfTheMatch = 1; // The generation timestamp of the first data stream element of the match
+
+    string sport = 2; // Sports discipline (e.g., "Football" or "Ice hockey")
+
+    double fieldLength = 3; // Length of the field in m (e.g., 105.0)
+
+    double fieldWidth = 4; // Width of the field in m (e.g., 68.0)
+
+    bool mirroredX = 5; // Boolean which specifies if the x coordinate of the tracked positions is mirrored
+
+    bool mirroredY = 6; // Boolean which specifies if the y coordinate of the tracked positions is mirrored
+
+    string areaInfos = 7; // List of area infos (e.g., {field:-52.5@52.5@-34.0@34.0},{leftThird:-52.5@-17.5@-34.0@34.0},{centerThird:-17.5@17.5@-34.0@34.0},...")
+
+    int64 matchStartUnixTs = 8; // Unix timestamp specifying the start of the match
+
+    string competition = 9; // Competition (e.g., "Bundesliga" or "UEFA Champtionsleague")
+
+    string venue = 10; // Venue (e.g., "St. Jakob-Park" or "Maracana")
+
+    string objectRenameMap = 11; // String specifying the object rename map (e.g., "{200:BALL:Ball}%{1:A1:PLAYERNAMEA1}%{2:A2:PLAYERNAMEA2}%{4:A3:PLAYERNAMEA3}%...")
+
+    string teamRenameMap = 12; // String specifying the team rename map (e.g., "{ball:BALL:Ball}%{home:A:TEAMNAMEA}%{away:B:TEAMNAMEB}")
+
+    string videoPath = 13; // Path to the video file
+
+    int64 matchStartVideoOffset = 14; // Video offset (in s) of the start of the match
+
+    string teamColorMap = 15; // String specifying the team color map (e.g., "{A:yellow}%{B:black}")
+}
+
+// Object identifiers, group identifiers and positions in the content:
+// all empty

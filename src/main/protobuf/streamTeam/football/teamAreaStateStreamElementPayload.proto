@@ -1,0 +1,38 @@
+/*
+ * StreamTeam
+ * Copyright (C) 2019  University of Basel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+
+package streamTeam.football;
+
+option java_package = "ch.unibas.dmi.dbis.streamTeam.dataStreamElements.protobuf.football";
+option java_outer_classname = "TeamAreaStateStreamElementPayloadProtos";
+
+// Payload of a teamAreaState stream element
+message TeamAreaStateStreamElementPayload {
+
+    double mbrSurface = 1; // Surface of the minimum bounding rectangle around the players of the team (in m^2)
+
+    double pchSurface = 2; // Surface of the planar convex hull around the players of the team (in m^2)
+}
+
+// Object identifiers, group identifiers and positions in the content:
+// groupIdentifiers[0] = Identifier of the team for which the team area state
+// for i = 0,...,numberOfPlayersPerTeam:
+// objectIdentifiers[i] = Identifier of the ith player of the team
+// position[i] = Position of the ith player of the team
