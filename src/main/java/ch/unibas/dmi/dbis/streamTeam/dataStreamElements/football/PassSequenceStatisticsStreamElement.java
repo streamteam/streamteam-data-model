@@ -95,7 +95,7 @@ public class PassSequenceStatisticsStreamElement extends AbstractImmutableDataSt
      * @throws CannotRetrieveInformationException Thrown if the passSequenceStatistics stream element is ill-formed
      */
     public boolean isTeamStatistics() throws CannotRetrieveInformationException {
-        return this.getObjectIdentifiersListSize() > 0;
+        return this.getObjectIdentifiersListSize() == 0;
     }
 
     /**

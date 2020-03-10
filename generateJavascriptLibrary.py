@@ -49,7 +49,7 @@ for root, directories, filenames in os.walk('src/main/protobuf/streamTeam/'):
             list.append(tuple)
 
 # https://www.w3schools.com/python/python_file_write.asp
-f = open("src/main/javascript/streamteam-data-model-lib.js", "w")
+f = open("src/main/javascript/streamteam-data-model-lib-1.0.1.js", "w")
 
 f.write("/*\n")
 f.write(" * StreamTeam\n")
@@ -73,7 +73,7 @@ f.write("// This file has been generated automatically with generateJavascriptLi
 
 f.write("// https://stackoverflow.com/questions/2188218/relative-paths-in-javascript-in-an-external-file/4440632#4440632\n")
 f.write("var jsFileLocation = $('script[src*=streamteam-data-model-lib]').attr('src');  // the js file path\n")
-f.write("jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib.js', '');   // the js folder path\n\n")
+f.write("jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib-1.0.1.js', '');   // the js folder path\n\n")
 
 f.write("protobuf.load([jsFileLocation + \"/protobuf/streamTeam/immutableDataStreamElementContent.proto\"")
 for tuple in list:

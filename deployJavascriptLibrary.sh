@@ -35,7 +35,7 @@ echo "Create empty javascriptLib folder"
 mkdir javascriptLib
 
 echo "Add files to javascriptLib folder"
-cp src/main/javascript/streamteam-data-model-lib.js javascriptLib
+cp src/main/javascript/streamteam-data-model-lib-1.0.1.js javascriptLib
 cp -R src/main/protobuf javascriptLib
 
 echo "Create $ARCHIVENAME"

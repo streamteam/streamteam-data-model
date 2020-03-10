@@ -93,7 +93,7 @@ public class ShotStatisticsStreamElement extends AbstractImmutableDataStreamElem
      * @throws CannotRetrieveInformationException Thrown if the shotStatistics stream element is ill-formed
      */
     public boolean isTeamStatistics() throws CannotRetrieveInformationException {
-        return this.getObjectIdentifiersListSize() > 0;
+        return this.getObjectIdentifiersListSize() == 0;
     }
 
     /**
