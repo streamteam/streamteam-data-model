@@ -20,7 +20,7 @@
 
 // https://stackoverflow.com/questions/2188218/relative-paths-in-javascript-in-an-external-file/4440632#4440632
 var jsFileLocation = $('script[src*=streamteam-data-model-lib]').attr('src');  // the js file path
-jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib-1.0.1.js', '');   // the js folder path
+jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib-1.1.0.js', '');   // the js folder path
 
 protobuf.load([jsFileLocation + "/protobuf/streamTeam/immutableDataStreamElementContent.proto",
 	jsFileLocation + "protobuf/streamTeam/dummyStreamElementPayload.proto",
