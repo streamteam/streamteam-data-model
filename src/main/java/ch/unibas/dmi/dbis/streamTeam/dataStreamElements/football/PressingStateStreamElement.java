@@ -54,8 +54,8 @@ public class PressingStateStreamElement extends AbstractImmutableDataStreamEleme
     /**
      * Generates a pressingState stream element.
      *
-     * @param matchId             The identifier of the match to which the pressing statistics data belong
-     * @param generationTimestamp The generation timestamp of the pressing statistics
+     * @param matchId             The identifier of the match to which the pressing state belongs
+     * @param generationTimestamp The generation timestamp of the pressing state
      * @param playerInfo          Information about the player in possession of the ball (without position information), null if no player is in possession of the ball
      * @param pressingIndex       Pressing index
      * @return pressingState stream element

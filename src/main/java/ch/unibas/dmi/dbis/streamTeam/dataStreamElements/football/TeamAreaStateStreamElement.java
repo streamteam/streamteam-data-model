@@ -57,8 +57,8 @@ public class TeamAreaStateStreamElement extends AbstractImmutableDataStreamEleme
     /**
      * Generates a teamAreaState stream element.
      *
-     * @param matchId             The identifier of the match for which the offside line is calculated
-     * @param generationTimestamp The generation timestamp of the offside line
+     * @param matchId             The identifier of the match for which the team area state is generated
+     * @param generationTimestamp The generation timestamp of the team area state
      * @param teamId              Identifier of the team
      * @param players             Information about the players of the team (incl. position information)
      * @param mbrSurface          Surface of the minimum bounding rectangle around the players of the team

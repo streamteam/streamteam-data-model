@@ -55,8 +55,8 @@ public class AreaEventStreamElement extends AbstractImmutableDataStreamElement {
     /**
      * Generates a areaEvent stream element.
      *
-     * @param matchId             The identifier of the match in which the successful pass took place
-     * @param generationTimestamp The generation timestamp of the successful pass
+     * @param matchId             The identifier of the match in which the area event took place
+     * @param generationTimestamp The generation timestamp of the area event
      * @param objectInfo          Information about the object (player or ball) who entered or left the area (incl. position information)
      * @param inArea              Flag indicating if the object entered the area (and thus the areaEvent stream elements represents an area entry event) or left the area (and thus the areaEvent stream element represents an area leave event)
      * @param areaId              Identifier of the area

@@ -20,7 +20,8 @@
 
 IP="10.34.58.65"
 FOLDER="/var/www/html/streamteam-data-model"
-KEY="~/.ssh/lukasPMAAS"
+USER="ubuntu"
+KEY="$HOME/.ssh/DemoMAAS"
 ARCHIVENAME="streamteam-data-model.tar.gz"
 
 #http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
@@ -35,7 +36,7 @@ echo "Create empty javascriptLib folder"
 mkdir javascriptLib
 
 echo "Add files to javascriptLib folder"
-cp src/main/javascript/streamteam-data-model-lib-1.1.0.js javascriptLib
+cp src/main/javascript/streamteam-data-model-lib-1.2.0.js javascriptLib
 cp -R src/main/protobuf javascriptLib
 
 echo "Create $ARCHIVENAME"
@@ -44,22 +45,22 @@ tar -czf ../$ARCHIVENAME ./
 cd ..
 
 echo "Remove $ARCHIVENAME from $IP"
-ssh -i $KEY ubuntu@$IP "rm $ARCHIVENAME"
+ssh -i $KEY $USER@$IP "rm $ARCHIVENAME"
 
 echo "Delete $FOLDER at $IP"
-ssh -i $KEY ubuntu@$IP "rm -R $FOLDER"
+ssh -i $KEY $USER@$IP "rm -R $FOLDER"
 
 echo "Create empty $FOLDER at $IP"
-ssh -i $KEY ubuntu@$IP "mkdir $FOLDER"
+ssh -i $KEY $USER@$IP "mkdir $FOLDER"
 
 echo "Copy $ARCHIVENAME to $IP"
-scp -i $KEY ./$ARCHIVENAME ubuntu@$IP:$ARCHIVENAME
+scp -i $KEY ./$ARCHIVENAME $USER@$IP:$ARCHIVENAME
 
 echo "Extract $ARCHIVENAME at $IP"
-ssh -i $KEY ubuntu@$IP "tar -xzf $ARCHIVENAME -C $FOLDER"
+ssh -i $KEY $USER@$IP "tar -xzf $ARCHIVENAME -C $FOLDER"
 
 echo "Remove $ARCHIVENAME from $IP"
-ssh -i $KEY ubuntu@$IP "rm $ARCHIVENAME"
+ssh -i $KEY $USER@$IP "rm $ARCHIVENAME"
 
 echo "Remove $ARCHIVENAME locally"
 rm $ARCHIVENAME

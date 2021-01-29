@@ -20,7 +20,7 @@
 
 // https://stackoverflow.com/questions/2188218/relative-paths-in-javascript-in-an-external-file/4440632#4440632
 var jsFileLocation = $('script[src*=streamteam-data-model-lib]').attr('src');  // the js file path
-jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib-1.1.0.js', '');   // the js folder path
+jsFileLocation = jsFileLocation.replace('streamteam-data-model-lib-1.2.0.js', '');   // the js folder path
 
 protobuf.load([jsFileLocation + "/protobuf/streamTeam/immutableDataStreamElementContent.proto",
 	jsFileLocation + "protobuf/streamTeam/dummyStreamElementPayload.proto",
@@ -37,6 +37,7 @@ protobuf.load([jsFileLocation + "/protobuf/streamTeam/immutableDataStreamElement
 	jsFileLocation + "protobuf/streamTeam/football/areaEventStreamElementPayload.proto",
 	jsFileLocation + "protobuf/streamTeam/football/penaltyEventStreamElementPayload.proto",
 	jsFileLocation + "protobuf/streamTeam/football/setPlayStatisticsStreamElementPayload.proto",
+	jsFileLocation + "protobuf/streamTeam/football/ballFieldSideStateStreamElementPayload.proto",
 	jsFileLocation + "protobuf/streamTeam/football/distanceStatisticsStreamElementPayload.proto",
 	jsFileLocation + "protobuf/streamTeam/football/dribblingEventStreamElementPayload.proto",
 	jsFileLocation + "protobuf/streamTeam/football/successfulPassEventStreamElementPayload.proto",
@@ -82,6 +83,7 @@ protobuf.load([jsFileLocation + "/protobuf/streamTeam/immutableDataStreamElement
 	AreaEventStreamElementPayload = root.lookupType("streamTeam.football.AreaEventStreamElementPayload");
 	PenaltyEventStreamElementPayload = root.lookupType("streamTeam.football.PenaltyEventStreamElementPayload");
 	SetPlayStatisticsStreamElementPayload = root.lookupType("streamTeam.football.SetPlayStatisticsStreamElementPayload");
+	BallFieldSideStateStreamElementPayload = root.lookupType("streamTeam.football.BallFieldSideStateStreamElementPayload");
 	DistanceStatisticsStreamElementPayload = root.lookupType("streamTeam.football.DistanceStatisticsStreamElementPayload");
 	DribblingEventStreamElementPayload = root.lookupType("streamTeam.football.DribblingEventStreamElementPayload");
 	SuccessfulPassEventStreamElementPayload = root.lookupType("streamTeam.football.SuccessfulPassEventStreamElementPayload");
@@ -157,6 +159,9 @@ function decodeBase64EncodedImmutableDataStreamElement(input) {
 			break;
 		case "type.googleapis.com/streamTeam.football.SetPlayStatisticsStreamElementPayload":
 			immutableDataStreamElement.payload = SetPlayStatisticsStreamElementPayload.decode(payloadBuffer);
+			break;
+		case "type.googleapis.com/streamTeam.football.BallFieldSideStateStreamElementPayload":
+			immutableDataStreamElement.payload = BallFieldSideStateStreamElementPayload.decode(payloadBuffer);
 			break;
 		case "type.googleapis.com/streamTeam.football.DistanceStatisticsStreamElementPayload":
 			immutableDataStreamElement.payload = DistanceStatisticsStreamElementPayload.decode(payloadBuffer);
